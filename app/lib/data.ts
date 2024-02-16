@@ -1,3 +1,5 @@
+
+
 import { sql } from '@vercel/postgres';
 import {
   CustomerField,
@@ -228,4 +230,5 @@ export async function getUser(email: string) {
     console.error('Failed to fetch user:', error);
     throw new Error('Failed to fetch user.');
   }
+
 }
