@@ -3,8 +3,6 @@ import Link from 'next/link';
 import { deleteInvoice } from '@/app/lib/actions';
 
 
-
-
 export function CreateInvoice() {
   return (
     <Link
@@ -20,7 +18,7 @@ export function CreateInvoice() {
 export function UpdateInvoice({ id }: { id: string }) {
   return (
     <Link
-    href={`/dashboard/invoices/${id}/edit`}
+      href={`/dashboard/invoices/${id}/edit`}
       className="rounded-md border p-2 hover:bg-gray-100"
     >
       <PencilIcon className="w-5" />
@@ -34,8 +32,8 @@ export function DeleteInvoice({ id }: { id: string }) {
     <form action={deleteInvoiceWithId}>
       <button className="rounded-md border p-2 hover:bg-gray-100">
         <span className="sr-only">Delete</span>
-        <TrashIcon className="w-5" />
+        <TrashIcon className="w-4" />
       </button>
-      </form>
-      );
+    </form>
+  );
 }
