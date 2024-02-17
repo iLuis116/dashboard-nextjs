@@ -1,4 +1,3 @@
-
 import { sql } from '@vercel/postgres';
 import {
   CustomerField,
@@ -13,8 +12,7 @@ import { formatCurrency } from './utils';
 import { unstable_noStore as noStore } from 'next/cache';
 
 export async function fetchRevenue() {
-  
-  // Add noStore() here to prevent the response from being cached.
+  // Add noStore() here prevent the response from being cached.
   // This is equivalent to in fetch(..., {cache: 'no-store'}).
   noStore();
   try {
@@ -152,7 +150,6 @@ export async function fetchInvoicesPages(query: string) {
 }
 
 export async function fetchInvoiceById(id: string) {
-  
   noStore();
   try {
     const data = await sql<InvoiceForm>`
@@ -170,7 +167,7 @@ export async function fetchInvoiceById(id: string) {
       // Convert amount from cents to dollars
       amount: invoice.amount / 100,
     }));
-    console.log(invoice); // Invoice is an empty array []
+
     return invoice[0];
   } catch (error) {
     console.error('Database Error:', error);
@@ -179,7 +176,6 @@ export async function fetchInvoiceById(id: string) {
 }
 
 export async function fetchCustomers() {
-  noStore();
   try {
     const data = await sql<CustomerField>`
       SELECT
@@ -239,5 +235,4 @@ export async function getUser(email: string) {
     console.error('Failed to fetch user:', error);
     throw new Error('Failed to fetch user.');
   }
-
 }
